@@ -1,53 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Bootstrap demo</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-			crossorigin="anonymous"
-		/>
-	</head>
-	<body>
-		<div class="container w-50">
-			<h1>Create Campground</h1>
-			<form
-				action="/campgrounds/<%= campground.id %>?_method=PUT "
-				method="POST"
-			>
-				<div class="mb-3">
-					<label for="Title" class="form-label">Title</label>
-					<input
-						placeholder="<%= campground.title %> "
-						type="text"
-						name="title"
-						class="form-control"
-						id="Title"
-					/>
-				</div>
-				<div class="mb-3">
-					<label for="location" class="form-label">Location</label>
-					<input
-						placeholder="<%= campground.location %> "
-						name="location"
-						type="text"
-						class="form-control"
-						id="location"
-					/>
-				</div>
-
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-			<a class="btn btn-sm btn-dark" href="/campgrounds">All Campgrounds</a>
+<% layout('layout/boilerplate') %>
+<div class="container w-50">
+	<h1>Create Campground</h1>
+	<form action="/campgrounds/<%= campground.id %>?_method=PUT " method="POST">
+		<div class="mb-3">
+			<label for="Title" class="form-label">Title</label>
+			<input
+				placeholder="<%= campground.title %> "
+				type="text"
+				name="title"
+				class="form-control"
+				id="Title"
+			/>
+		</div>
+		<div class="mb-3">
+			<label for="location" class="form-label">Location</label>
+			<input
+				placeholder="<%= campground.location %> "
+				name="location"
+				type="text"
+				class="form-control"
+				id="location"
+			/>
 		</div>
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-			crossorigin="anonymous"
-		></script>
-	</body>
-</html>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	<a class="btn btn-sm btn-dark" href="/campgrounds">All Campgrounds</a>
+</div>

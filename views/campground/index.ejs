@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cammpground</title>
-	</head>
-	<body>
-		<h1>Testing Campgrounds page</h1>
-		<a href="/campgrounds/create"> Create </a>
-		<ul>
-			<% for(let campground of campgrounds){ %>
-			<li>
-				<a href="/campgrounds/<%=campground.id%> "> <%=campground.title%></a>
-			</li>
-			<% } %>
-		</ul>
-	</body>
-</html>
+<% layout('layout/boilerplate') %>
+<div class="container">
+	<h1>Testing Campgrounds page</h1>
+	<ul>
+		<% for(let campground of campgrounds){ %>
+		<li>
+			<a class="link-secondary" href="/campgrounds/<%=campground.id%> ">
+				<%=campground.title%></a
+			>
+		</li>
+		<% } %>
+	</ul>
+</div>

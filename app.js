@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const Campground = require("./models/campground");
+const ejsMate = require("ejs-mate");
 
 app.use(methodOverride("_method"));
 app.use(express.json());
@@ -21,7 +22,7 @@ mongoose
 	.catch((err) => {
 		console.log("Error connecting to Database", err);
 	});
-
+app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -59,6 +60,11 @@ app.put("/campgrounds/:id", async (req, res) => {
 	const { id } = req.params;
 	const campground = await Campground.findByIdAndUpdate(id, req.body);
 	await campground.save();
+	res.redirect("/campgrounds");
+});
+app.delete("/campgrounds/:id", async (req, res) => {
+	const { id } = req.params;
+	const campground = await Campground.findByIdAndDelete(id);
 	res.redirect("/campgrounds");
 });
 
