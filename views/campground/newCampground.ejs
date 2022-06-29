@@ -1,15 +1,29 @@
 <% layout('layout/boilerplate') %>
 <div class="container w-50">
 	<h1>Create Campground</h1>
-	<form action="/campgrounds" method="POST">
+	<form action="/campgrounds" method="POST" novalidate class="needs-validation">
 		<div class="row mb-3 input-group-sm">
 			<div class="col">
 				<label for="Title" class="form-label">Title</label>
-				<input type="text" name="title" class="form-control" id="Title" />
+				<input
+					type="text"
+					name="title"
+					class="form-control"
+					id="Title"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
 			</div>
 			<div class="col">
 				<label for="location" class="form-label">Location</label>
-				<input name="location" type="text" class="form-control" id="location" />
+				<input
+					name="location"
+					type="text"
+					class="form-control"
+					id="location"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
 			</div>
 		</div>
 		<label for="basic-url" class="form-label">Image URL</label>
@@ -19,32 +33,38 @@
 					>https://example.com/users/</span
 				>
 				<input
+					required
 					name="image"
 					type="text"
 					class="form-control"
 					id="basic-url"
 					aria-describedby="basic-addon3"
 				/>
+				<div class="valid-feedback">Looks good!</div>
 			</div>
 			<div class="input-group input-group-sm mb-3 col">
 				<span class="input-group-text">$</span>
 				<input
+					required
 					name="price"
 					type="text"
 					class="form-control"
 					aria-label="Amount (to the nearest dollar)"
 				/>
+				<div class="valid-feedback">Looks good!</div>
 				<span class="input-group-text">.00</span>
 			</div>
 		</div>
 		<div class="mb-3">
 			<label for="description" class="form-label">Description</label>
 			<textarea
+				required
 				name="description"
 				class="form-control"
 				id="description"
 				rows="3"
 			></textarea>
+			<div class="valid-feedback">Looks good!</div>
 		</div>
 
 		<button type="submit" class="btn btn-primary btn-sm mt-3">Submit</button>
