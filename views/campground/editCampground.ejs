@@ -1,29 +1,69 @@
 <% layout('layout/boilerplate') %>
+
 <div class="container w-50">
-	<h1>Create Campground</h1>
+	<h1>Edit Campground</h1>
 	<form action="/campgrounds/<%= campground.id %>?_method=PUT " method="POST">
-		<div class="mb-3">
-			<label for="Title" class="form-label">Title</label>
-			<input
-				placeholder="<%= campground.title %> "
-				type="text"
-				name="title"
-				class="form-control"
-				id="Title"
-			/>
+		<div class="row mb-3 input-group-sm">
+			<div class="col">
+				<label for="Title" class="form-label">Title</label>
+				<input
+					value="<%= campground.title %>"
+					type="text"
+					name="title"
+					class="form-control"
+					id="Title"
+				/>
+			</div>
+			<div class="col">
+				<label for="location" class="form-label">Location</label>
+				<input
+					value="<%= campground.location %>"
+					name="location"
+					type="text"
+					class="form-control"
+					id="location"
+				/>
+			</div>
+		</div>
+		<label for="basic-url" class="form-label">Image URL</label>
+		<div class="row">
+			<div class="col input-group input-group-sm mb-3">
+				<span class="input-group-text" id="basic-addon3"
+					>https://example.com/users/</span
+				>
+				<input
+					value="<%= campground.image %>"
+					name="image"
+					type="text"
+					class="form-control"
+					id="basic-url"
+					aria-describedby="basic-addon3"
+				/>
+			</div>
+			<div class="input-group input-group-sm mb-3 col">
+				<span class="input-group-text">$</span>
+				<input
+					value="<%= campground.price %>"
+					name="price"
+					type="text"
+					class="form-control"
+					aria-label="Amount (to the nearest dollar)"
+				/>
+				<span class="input-group-text">.00</span>
+			</div>
 		</div>
 		<div class="mb-3">
-			<label for="location" class="form-label">Location</label>
-			<input
-				placeholder="<%= campground.location %> "
-				name="location"
-				type="text"
+			<label for="description" class="form-label">Description</label>
+			<textarea
+				name="description"
 				class="form-control"
-				id="location"
-			/>
+				id="description"
+				rows="3"
+			>
+<%= campground.description %></textarea
+			>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary btn-sm mt-3">Submit</button>
 	</form>
-	<a class="btn btn-sm btn-dark" href="/campgrounds">All Campgrounds</a>
 </div>

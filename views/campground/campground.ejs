@@ -1,18 +1,30 @@
 <% layout('layout/boilerplate') %>
-<div class="container">
-	<h1>Campground page</h1>
-	<h2><%= campground.title %></h2>
-	<h2><%= campground.location %></h2>
-	<div class="text-end">
-		<a class="link-secondary p-1" href="/campgrounds/<%= campground.id %>/edit "
-			>Edit</a
-		>
+<div class="row my-5">
+	<div class="col-6 offset-3">
+		<div class="card">
+			<img src="<%= campground.image%> " class="card-img-top" alt="..." />
+			<div class="card-body">
+				<h5 class="card-title"><%= campground.title %></h5>
+				<p class="card-text"><%= campground.description %></p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item text-muted"><%= campground.location %></li>
+				<li class="list-group-item">$<%= campground.price %>/night</li>
+			</ul>
+			<div class="card-body">
+				<a
+					href="/campgrounds/<%= campground.id %>/edit "
+					class="btn btn-warning"
+					>Edit</a
+				>
+				<form
+					class="d-inline"
+					method="POST"
+					action="/campgrounds/<%= campground.id %>?_method=DELETE"
+				>
+					<button class="btn btn-dark">Delete</button>
+				</form>
+			</div>
+		</div>
 	</div>
-	<form
-		class="text-end"
-		method="POST"
-		action="/campgrounds/<%= campground.id %>?_method=DELETE"
-	>
-		<button class="btn btn-dark">Delete</button>
-	</form>
 </div>
