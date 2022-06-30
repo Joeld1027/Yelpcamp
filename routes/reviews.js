@@ -30,15 +30,18 @@ router.post(
 	})
 );
 
-router.delete("/:reviewId", async (req, res) => {
-	const { id, reviewId } = req.params;
-	const campground = await Campground.findByIdAndUpdate(id, {
-		$pull: { reviews: reviewId },
-	});
-	await campground.save();
-	await Review.findByIdAndDelete(reviewId);
-	req.flash("success", "Deleted your Review");
-	res.redirect("back");
-});
+router.delete(
+	"/:reviewId",
+	catchAsync(async (req, res) => {
+		const { id, reviewId } = req.params;
+		const campground = await Campground.findByIdAndUpdate(id, {
+			$pull: { reviews: reviewId },
+		});
+		await campground.save();
+		await Review.findByIdAndDelete(reviewId);
+		req.flash("success", "Deleted your Review");
+		res.redirect("back");
+	})
+);
 
 module.exports = router;

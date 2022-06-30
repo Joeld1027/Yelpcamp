@@ -1,5 +1,5 @@
 <nav class="mb-3 navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container-fluid">
+	<div class="container-fluid w-75">
 		<a class="navbar-brand" href="#">Navbar</a>
 		<button
 			class="navbar-toggler"
@@ -24,6 +24,14 @@
 					<a class="nav-link" href="/campgrounds/create">New Campground</a>
 				</li>
 			</ul>
+		</div>
+		<div class="navbar-nav ml-auto">
+			<% if(!currentUser){ %>
+			<a href="/login" class="nav-link">Login</a>
+			<a href="/register" class="nav-link">Register</a>
+			<% } else { %>
+			<a href="/logout" class="nav-link">Logout</a>
+			<% } %>
 		</div>
 	</div>
 </nav>
